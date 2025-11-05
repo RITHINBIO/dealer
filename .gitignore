@@ -1,2 +1,34 @@
 
-jjjj.html
+class Employee {
+  constructor(name, basicSalary, bonus) {
+    this.name = name;
+    this.basicSalary = basicSalary;
+    this.bonus = bonus;
+  }
+
+  getTotalSalary() {
+    return this.basicSalary + this.bonus;
+  }
+}
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+let inputs = [];
+
+rl.on("line", (line) => {
+  inputs.push(line.trim());
+  if (inputs.length === 3) {
+    const name = inputs[0];
+    const basicSalary = parseInt(inputs[1]);
+    const bonus = parseInt(inputs[2]);
+
+    const emp = new Employee(name, basicSalary, bonus);
+    console.log(`${emp.name}'s Total Salary: ${emp.getTotalSalary()}`);
+    rl.close();
+  }
+});
